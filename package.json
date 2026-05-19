@@ -1,0 +1,12 @@
+{
+  "name": "food-aversion-daily",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "fetch": "node scripts/fetch-papers.mjs",
+    "report": "node scripts/generate-report.mjs",
+    "index": "node scripts/generate-index.mjs"
+  },
+  "dependencies": {}
+}
