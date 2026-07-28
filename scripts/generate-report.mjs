@@ -1,13 +1,10 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 
-const API_BASE =
-  process.env.ZHIPU_API_BASE ||
-  "https://open.bigmodel.cn/api/coding/paas/v4";
+const API_BASE = "https://integrate.api.nvidia.com/v1";
 const MODELS_FALLBACK = [
-  process.env.ZHIPU_MODEL_PRIMARY || "glm-5-turbo",
-  "GLM-4.7",
-  "GLM-4.7-Flash",
+  "nvidia/nemotron-3-super-120b-a12b",
+  "nvidia/nemotron-3-nano-30b-a3b",
 ];
 const TARGET_DATE = process.env.TARGET_DATE || getTaipeiDate();
 const PAPERS_PATH = resolve("papers.json");
@@ -73,7 +70,7 @@ function loadPapers() {
   return JSON.parse(raw);
 }
 
-async function callZhipu(apiKey, payload, timeout = 480000) {
+async function callNvidia(apiKey, payload, timeout = 480000) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
   try {
@@ -224,12 +221,14 @@ ${papersText}
             { role: "system", content: SYSTEM_PROMPT },
             { role: "user", content: prompt },
           ],
-          temperature: 0.3,
-          top_p: 0.9,
-          max_tokens: 50000,
+          temperature: 1.0,
+          top_p: 0.95,
+          max_tokens: 16384,
+          stream: false,
+          chat_template_kwargs: { enable_thinking: false },
         };
 
-        const data = await callZhipu(apiKey, payload, 480000);
+        const data = await callNvidia(apiKey, payload, 480000);
         const text =
           data?.choices?.[0]?.message?.content?.trim() || "";
         if (!text) throw new Error("Empty response from API");
@@ -479,7 +478,7 @@ function generateHtml(analysis) {
       <div class="header-meta">
         <span class="badge badge-date">\uD83D\uDCC5 ${dateDisplay}</span>
         <span class="badge badge-count">\uD83D\uDCCA ${totalCount} 篇文獻</span>
-        <span class="badge badge-source">Powered by PubMed + Zhipu AI</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
       </div>
     </div>
   </header>
@@ -525,10 +524,10 @@ function generateHtml(analysis) {
 }
 
 async function main() {
-  const apiKey = process.env.ZHIPU_API_KEY;
+  const apiKey = process.env.NVIDIA_API_KEY;
   if (!apiKey) {
     console.error(
-      "[ERROR] ZHIPU_API_KEY environment variable is required"
+      "[ERROR] NVIDIA_API_KEY environment variable is required"
     );
     process.exit(1);
   }

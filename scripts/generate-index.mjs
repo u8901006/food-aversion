@@ -70,7 +70,7 @@ const index = `<!DOCTYPE html>
     <a href="https://buymeacoffee.com/CYlee" target="_blank" rel="noopener">\u2615 Buy Me a Coffee</a>
   </div>
   <footer>
-    <p>Powered by PubMed + Zhipu AI &middot; <a href="https://github.com/u8901006/food-aversion">GitHub</a></p>
+<p>Powered by PubMed + NVIDIA AI &middot; <a href="https://github.com/u8901006/food-aversion">GitHub</a></p>
   </footer>
 </div>
 </body>
