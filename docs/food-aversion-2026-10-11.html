@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Food Aversion Daily &middot; 食物厭惡研究文獻日報 &middot; 2026年10月11日</title>
+<meta name="description" content="2026年10月11日 食物厭惡研究文獻日報，由 AI 自動彙整 PubMed 最新論文"/>
+<style>
+  :root { --bg: #f6f1e8; --surface: #fffaf2; --line: #d8c5ab; --text: #2b2118; --muted: #766453; --accent: #8c4f2b; --accent-soft: #ead2bf; --card-bg: color-mix(in srgb, var(--surface) 92%, white); }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: radial-gradient(circle at top, #fff6ea 0, var(--bg) 55%, #ead8c6 100%); color: var(--text); font-family: "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, sans-serif; min-height: 100vh; overflow-x: hidden; }
+  .container { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; padding: 60px 32px 80px; }
+  header { display: flex; align-items: center; gap: 16px; margin-bottom: 52px; animation: fadeDown 0.6s ease both; }
+  .logo { width: 48px; height: 48px; border-radius: 14px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; box-shadow: 0 4px 20px rgba(140,79,43,0.25); }
+  .header-text h1 { font-size: 22px; font-weight: 700; color: var(--text); letter-spacing: -0.3px; }
+  .header-meta { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; align-items: center; }
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; letter-spacing: 0.3px; }
+  .badge-date { background: var(--accent-soft); border: 1px solid var(--line); color: var(--accent); }
+  .badge-count { background: rgba(140,79,43,0.06); border: 1px solid var(--line); color: var(--muted); }
+  .badge-source { background: transparent; color: var(--muted); font-size: 11px; padding: 0 4px; }
+  .summary-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 28px 32px; margin-bottom: 32px; box-shadow: 0 20px 60px rgba(61,36,15,0.06); animation: fadeUp 0.5s ease 0.1s both; }
+  .summary-card h2 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.6px; color: var(--accent); margin-bottom: 16px; }
+  .summary-text { font-size: 15px; line-height: 1.8; color: var(--text); }
+  .section { margin-bottom: 36px; animation: fadeUp 0.5s ease both; }
+  .section-title { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+  .section-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; background: var(--accent-soft); }
+  .news-card { background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; padding: 22px 26px; margin-bottom: 12px; box-shadow: 0 8px 30px rgba(61,36,15,0.04); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+  .news-card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .news-card.featured { border-left: 3px solid var(--accent); }
+  .news-card.featured:hover { border-color: var(--accent); }
+  .card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .rank-badge { background: var(--accent); color: #fff7f0; font-weight: 700; font-size: 12px; padding: 2px 8px; border-radius: 6px; }
+  .emoji-icon { font-size: 18px; }
+  .card-header-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .emoji-sm { font-size: 14px; }
+  .news-card h3 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.5; }
+  .journal-source { font-size: 12px; color: var(--accent); margin-bottom: 8px; opacity: 0.8; }
+  .news-card p { font-size: 13.5px; line-height: 1.75; color: var(--muted); }
+  .card-footer { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .tag { padding: 2px 9px; background: var(--accent-soft); border-radius: 999px; font-size: 11px; color: var(--accent); }
+  .news-card a { font-size: 12px; color: var(--accent); text-decoration: none; opacity: 0.7; margin-left: auto; }
+  .news-card a:hover { opacity: 1; }
+  .utility-high { color: #5a7a3a; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(90,122,58,0.1); border-radius: 4px; }
+  .utility-mid { color: #9f7a2e; font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(159,122,46,0.1); border-radius: 4px; }
+  .utility-low { color: var(--muted); font-size: 11px; font-weight: 600; padding: 2px 8px; background: rgba(118,100,83,0.08); border-radius: 4px; }
+  .utility-sm { font-size: 10px; }
+  .pico-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; padding: 12px; background: rgba(255,253,249,0.8); border-radius: 14px; border: 1px solid var(--line); }
+  .pico-item { display: flex; gap: 8px; align-items: baseline; }
+  .pico-label { font-size: 10px; font-weight: 700; color: #fff7f0; background: var(--accent); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+  .pico-text { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  .keywords-section { margin-bottom: 36px; }
+  .keywords { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .keyword { padding: 5px 14px; background: var(--accent-soft); border: 1px solid var(--line); border-radius: 20px; font-size: 12px; color: var(--accent); cursor: default; transition: background 0.2s; }
+  .keyword:hover { background: rgba(140,79,43,0.18); }
+  .topic-section { margin-bottom: 36px; }
+  .topic-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+  .topic-name { font-size: 13px; color: var(--muted); width: 100px; flex-shrink: 0; text-align: right; }
+  .topic-bar-bg { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .topic-bar { height: 100%; background: linear-gradient(90deg, var(--accent), #c47a4a); border-radius: 4px; transition: width 0.6s ease; }
+  .topic-count { font-size: 12px; color: var(--accent); width: 24px; }
+  .clinic-banner { margin-top: 24px; animation: fadeUp 0.5s ease 0.3s both; }
+  .clinic-link { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: var(--card-bg); border: 1px solid var(--line); border-radius: 24px; text-decoration: none; color: var(--text); transition: all 0.2s; box-shadow: 0 8px 30px rgba(61,36,15,0.04); }
+  .clinic-link:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(61,36,15,0.08); }
+  .clinic-icon { font-size: 28px; flex-shrink: 0; }
+  .clinic-name { font-size: 15px; font-weight: 700; color: var(--text); flex: 1; }
+  .clinic-arrow { font-size: 18px; color: var(--accent); font-weight: 700; }
+  .clinic-links-grid { display: grid; gap: 10px; margin-top: 24px; animation: fadeUp 0.5s ease 0.3s both; }
+  .clinic-links-grid .clinic-link { }
+  footer { margin-top: 32px; padding-top: 22px; border-top: 1px solid var(--line); font-size: 11.5px; color: var(--muted); display: flex; justify-content: space-between; animation: fadeUp 0.5s ease 0.5s both; }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+  @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  @media (max-width: 600px) { .container { padding: 36px 18px 60px; } .summary-card, .news-card { padding: 20px 18px; } .pico-grid { grid-template-columns: 1fr; } footer { flex-direction: column; gap: 6px; text-align: center; } .topic-name { width: 70px; font-size: 11px; } .clinic-links-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="logo">🍊</div>
+    <div class="header-text">
+      <h1>Food Aversion Daily &middot; 食物厭惡研究文獻日報</h1>
+      <div class="header-meta">
+        <span class="badge badge-date">📅 2026年10月11日</span>
+        <span class="badge badge-count">📊 15 篇文獻</span>
+        <span class="badge badge-source">Powered by PubMed + NVIDIA AI</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="summary-card">
+    <h2>📋 今日文獻趨勢</h2>
+    <p class="summary-text">今日文獻聚焦於食物厭惡與胃腸疾患、自閉症餵食困難、ARFID 併發症及親職介入，顯示跨領域整合趨勢，尤其強調非食道性胃腸疾患與 ARFID 的關聯，以及早期幼兒食物嫌惡對認知發展的影響。</p>
+  </div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">⭐</span>今日精選 TOP Picks</div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#1</span>
+            <span class="emoji-icon">🩺</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>胃腸道內的迴避/限制性食物攝入：非食道性疾患與 ARFID 的關聯</h3>
+          <p class="journal-source">Clinical gastroenterology and hepatology : the official clinical practice journal of the American Gastroenterological Association &middot; Avoidant/restrictive food intake across the gastrointestinal tract.</p>
+          <p>非食道性胃腸疾患（如 IBS、FD、便秘）患者中 ARFID+ 顯著較食道性疾患高發（24% vs 11%），恐懼導致的食物迴避是疼痛相關限制性飲食的主要貢獻因子。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">胃腸疾患患者（IBS、FD、便秘、逆流、噁心嘔吐、吞嚥困難、贲門失弛緩症）及健康志願者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷式觀察研究）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">健康志願者 (HV)</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">ARFID+ 之流行率及其與症狀嚴重度、腸外症狀、憂鬱的關聯</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">ARFID</span><span class="tag">GI 食物迴避</span><span class="tag">營養不良</span><span class="tag">胃腸科</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42854770/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#2</span>
+            <span class="emoji-icon">👨‍👩‍👧‍👦</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>兒童 ARFID 的親職餐飲訓練團體：可行性與接受度初步研究</h3>
+          <p class="journal-source">Eating disorders &middot; Development and early implementation of a brief 2-day multidisciplinary parent training group for paediatric ARFID: A feasibility and acceptability study.</p>
+          <p>為期兩天的多專業親職訓練團體在兒童 ARFID 家庭中可行性高（89% 完成率）、接受度佳，並提升照護者能力與減少孤立感。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">5–14歲患有 DSM-5 ARFID 的兒童之父母（n=18）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">為期兩天（12小時）多專業親職訓練團體</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照組（單組實施研究）</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">可行性（完成率）、接受度（HAQ-11S、CSQ-8）、親職自我效能與對疾病的理解</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">ARFID</span><span class="tag">職能治療</span><span class="tag">CBT-AR</span><span class="tag">暴露治療</span><span class="tag">親職介入</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42845011/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#3</span>
+            <span class="emoji-icon">🧒</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>食物恐新症預測學齡前兒童一年後之認知發展：縱向研究</h3>
+          <p class="journal-source">Child development &middot; Food neophobia predicts early cognitive development: A longitudinal study.</p>
+          <p>學前兒童早期較高食物恐新症預測其一年後分類與執行功能表現較差，但認知能力不會後續影響食物恐新症，提示其為早期發展風險因子。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">法國學前兒童（n=113，平均年齡 48.3 月）</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">測量 Time 1 的食物恐新症</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">Time 1 食物恐新症較低者</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">Time 2 的食物分類能力與執行功能（工作記憶、抑制、認知彈性）</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">食物恐新症</span><span class="tag">飲食行為</span><span class="tag">感官敏感</span><span class="tag">兒童餵食</span><span class="tag">發展心理學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42848464/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#4</span>
+            <span class="emoji-icon">🧩</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>自閉症兒童的親職餐飲實踐：與典型發展兒童之比較研究</h3>
+          <p class="journal-source">The American journal of occupational therapy : official publication of the American Occupational Therapy Association &middot; Parental Mealtime Practices in Children with Autism Spectrum Disorder: A Comparative Study.</p>
+          <p>自閉症兒童父母較常使用「特殊餐飲」且水果蔬菜可得性較低，其用餐行為與孩子自閉症特徵顯著相關，提示需調整親職策略以改善用餐參與。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">2–7歲自閉症兒童 (n=97) 與典型發展兒童 (n=90) 之父母</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（橫斷式比較）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">典型發展兒童父母</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">親職餐飲行動量表 (PMAS) 子量表：正面說服、水果蔬菜可得性、特殊餐飲</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">自閉症飲食</span><span class="tag">職能治療</span><span class="tag">親職介入</span><span class="tag">飲食行為</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42852810/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#5</span>
+            <span class="emoji-icon">🍼</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>早產嬰兒餵食厭惡之 allied health 介入：範疇性文獻回顧</h3>
+          <p class="journal-source">International journal of language &amp;amp; communication disorders &middot; Mapping the Evidence for Allied Health Interventions for Preterm Infants With Feeding Aversion: A Scoping Review.</p>
+          <p>針對早產嬰兒餵食厭惡，盟健專業已識別出 56 種介入技術，多著重於環境、行為與身體結構，但缺乏單一最佳實證與嚴謹研究。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">早產嬰兒併有餵食厭惡</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">allied health 主導之各種介入（職能、語言、物理治療等）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照（範疇性回顧）</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">介入技術類型、服務環境、結果測量（口腔攝入、成長、用餐行為等）</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">兒童餵食</span><span class="tag">職能治療</span><span class="tag">語言治療</span><span class="tag">早期介入</span><span class="tag">喂養困難</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42831569/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#6</span>
+            <span class="emoji-icon">📊</span>
+            <span class="utility-high">高實用性</span>
+          </div>
+          <h3>兒童 ARFID 的醫學與精神共病：系統評估與 Meta 分析</h3>
+          <p class="journal-source">European eating disorders review : the journal of the Eating Disorders Association &middot; Prevalence of Medical and Psychiatric Comorbidities in Paediatric ARFID: A Meta-Analysis.</p>
+          <p>兒童 ARFID 常見共病包括胃腸疾患（30%）、營養不良（32%）、焦慮症（44%）及自閉症（19%），證實其複雜性及需多專業評估的必要性。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">0–18歲被診斷為 ARFID 的兒童</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">無（Meta 分析）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">無對照</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">醫學（胃腸、營養、過敏）與精神（焦慮、憂鬱、自閉症、ADHD、OCD）共病的匱別流行率</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">ARFID</span><span class="tag">胃腸科</span><span class="tag">精神科</span><span class="tag">營養不良</span><span class="tag">自閉症</span><span class="tag">焦慮症</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42830628/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#7</span>
+            <span class="emoji-icon">🔬</span>
+            <span class="utility-low">低實用性</span>
+          </div>
+          <h3>鋅缺乏與循環飲食行為：從動物模型到人類的可能意涵</h3>
+          <p class="journal-source">Nutrition reviews &middot; Zinc Deficiency and Cyclic Feeding Behavior-From Animal Models to Potential Human Implications.</p>
+          <p>動物模型顯示鋅缺乏會引發約 3.5 週循環的飲食波動，雖人類尚無直接證據，但提醒在厭食症或 ARFID 中考慮微量營養素角色。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">主要為雄性大鼠（動物模型）；人類：厭食症、ARFID 病患之間接臨床線索</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">鋅缺乏（實驗）或自然缺乏（臨床觀察）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">正常鋅攝取組</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">飲食攝入的週期性變化（cosinor 分析）及可能機制（脊髓下視丘–胃腸軸）</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">營養不良</span><span class="tag">厭惡心理</span><span class="tag">神經科學</span><span class="tag">微量元素</span><span class="tag">胃腸激素</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42838513/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card featured">
+          <div class="card-header">
+            <span class="rank-badge">#8</span>
+            <span class="emoji-icon">💊</span>
+            <span class="utility-mid">中實用性</span>
+          </div>
+          <h3>雙胺類激素類似物（GLP-1 RA）對口腔與唾液的不良影響：臨床見解</h3>
+          <p class="journal-source">Journal of oral pathology &amp;amp; medicine : official publication of the International Association of Oral Pathologists and the American Academy of Oral Pathology &middot; Adverse Oral and Salivary Effects Associated With Glucagon-Like Peptide-1 Receptor Agonists: Clinical Insights.</p>
+          <p>GLP-1 RA 可導致口乾、味覺改變（dysgeusia）、唾液分泌減少，間接增加飲食厭惡與營養風險，提示需監測口腔副作用以維持依附性。</p>
+          
+            <div class="pico-grid">
+              <div class="pico-item"><span class="pico-label">P</span><span class="pico-text">使用 GLP-1 RA 治療的 2型糖尿病或肥胖患者</span></div>
+              <div class="pico-item"><span class="pico-label">I</span><span class="pico-text">GLP-1 RA 使用（如 sémaglutide、tirzepatide）</span></div>
+              <div class="pico-item"><span class="pico-label">C</span><span class="pico-text">未使用或其他降糖藥</span></div>
+              <div class="pico-item"><span class="pico-label">O</span><span class="pico-text">口腔症狀（ xerostomia、hyposalivation、dysgeusia）、唾液功能、生活品質</span></div>
+            </div>
+          <div class="card-footer">
+            <span class="tag">腫瘤營養</span><span class="tag">味覺嫌惡</span><span class="tag">噁心嘔吐</span><span class="tag">內分泌科</span><span class="tag">藥物副作用</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42843413/" target="_blank" rel="noopener">閱讀原文 &#8594;</a>
+          </div>
+        </div></div>
+
+  <div class="section"><div class="section-title"><span class="section-icon">📚</span>其他值得關注的文獻</div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧠</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>ADHD 兒童之飲食行為模式及其相關因子：多維度、多告訴者視角</h3>
+          <p class="journal-source">Appetite</p>
+          <p>ADHD 兒童較常見情緒性過食與進食衝動，且教師評分之衝動預測其 BMI 經由情緒性過食的間接路徑。</p>
+          <div class="card-footer">
+            <span class="tag">ADHD</span><span class="tag">飲食行為</span><span class="tag">情緒性進食</span><span class="tag">兒童心理</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42843525/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🤰</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>妊娠劇吐的前庭症狀負擔：與偏頭痛及運動暈眩之尺度比較</h3>
+          <p class="journal-source">Journal of vestibular research : equilibrium &amp;amp; orientation</p>
+          <p>嚴重妊娠劇吐婦女較易有運動暈眩與視覺誘發之 motion sickness，並伴有較高頭痛影響，提示前庭敏感性可能參與其病理。</p>
+          <div class="card-footer">
+            <span class="tag">妊娠劇吐</span><span class="tag">噁心嘔吐</span><span class="tag">前庭科</span><span class="tag">偏頭痛</span><span class="tag">孕期衛生</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42841802/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🐭</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>活動性厭食症模型中 mGluR2/3 調節劑的影響：加重體重減少與活動量</h3>
+          <p class="journal-source">Neuropharmacology</p>
+          <p>mGluR2/3 激動劑與拮抗劑在雌性活動性厭食模型中皆減少食入、增加活動，惡化狀態，提示其對厭食症潛在負面影響。</p>
+          <div class="card-footer">
+            <span class="tag">厭食症</span><span class="tag">神經科學</span><span class="tag">谷氨酸受體</span><span class="tag">動物模型</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42838416/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">💉</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>Talquetamab 治療下多發性骨髓瘤患者之味覺功能障礙：患者回報的跨橫斷面研究</h3>
+          <p class="journal-source">Supportive care in cancer : official journal of the Multinational Association of Supportive Care in Cancer</p>
+          <p>Talquetamab 治療近乎所有患者出現味覺障礙，超過 6 伴食慾下降，近半數報告體重下降，味覺缺損與整體健康狀況顯著相關。</p>
+          <div class="card-footer">
+            <span class="tag">腫瘤營養</span><span class="tag">味覺嫌惡</span><span class="tag">噁心嘔吐</span><span class="tag">免疫療法</span><span class="tag">支持性照護</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42834234/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🧘</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>短程內感暴露與家庭為基礎治療對低體重進食障礙青少年之隨機對照試驗</h3>
+          <p class="journal-source">Journal of child psychology and psychiatry, and allied disciplines</p>
+          <p>內感暴露介入顯著增加進食熱量（單餐 +98 kcal，多餐 +137 kcal），但未影響體重百分比，顯示其於改善行為而非體重之潛力。</p>
+          <div class="card-footer">
+            <span class="tag">暴露治療</span><span class="tag">家庭治療</span><span class="tag">青少年</span><span class="tag">低體重進食障礙</span><span class="tag">厭食症</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42310840/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">😔</span>
+            <span class="utility-low utility-sm">低</span>
+          </div>
+          <h3>餐飲時父母情緒社會化對兒童回避行為之影響：觀察性研究</h3>
+          <p class="journal-source">Appetite</p>
+          <p>不喜愛的餐時中，父母的支持與非支持性情緒實踐皆與兒童多樣化迴避行為正相關，而和諧親子情緒氣候則具保護作用。</p>
+          <div class="card-footer">
+            <span class="tag">親職介入</span><span class="tag">情緒調節</span><span class="tag">兒童行為</span><span class="tag">飲食行為</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/42285521/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div>
+        <div class="news-card">
+          <div class="card-header-row">
+            <span class="emoji-sm">🦠</span>
+            <span class="utility-mid utility-sm">中</span>
+          </div>
+          <h3>幽門螺旋桿菌感染對懷孕與胎兒併發症之影響：系統評估與 Meta 分析</h3>
+          <p class="journal-source">The journal of maternal-fetal &amp;amp; neonatal medicine : the official journal of the European Association of Perinatal Medicine, the Federation of Asia and Oceania Perinatal Societies, the International Society of Perinatal Obstetricians</p>
+          <p>H. pylori 感染顯著增加妊娠劇吐風險（RR 5.57），同時與子癇前症、妊娠糖尿病、早產及小_for_gestational_age 相關。</p>
+          <div class="card-footer">
+            <span class="tag">妊娠劇吐</span><span class="tag">幽門螺桿菌</span><span class="tag">產前檢查</span><span class="tag">感染科</span><span class="tag">母胎醫學</span>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41748262/" target="_blank" rel="noopener">PubMed &#8594;</a>
+          </div>
+        </div></div>
+
+  <div class="topic-section section"><div class="section-title"><span class="section-icon">📊</span>主題分佈</div>
+            <div class="topic-row">
+              <span class="topic-name">ARFID</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:100%"></div></div>
+              <span class="topic-count">5</span>
+            </div>
+            <div class="topic-row">
+              <span class="topic-name">條件化味覺嫌惡</span>
+              <div class="topic-bar-bg"><div class="topic-bar" style="width:40%"></div></div>
+              <span class="topic-count">2</span>
+            </div></div>
+
+  <div class="keywords-section section"><div class="section-title"><span class="section-icon">🏷️</span>關鍵字</div><div class="keywords"><span class="keyword">ARFID</span><span class="keyword">食物厭惡</span><span class="keyword">胃腸疾患</span><span class="keyword">自閉症餵食</span><span class="keyword">親職介入</span><span class="keyword">味覺嫌惡</span><span class="keyword">妊娠劇吐</span><span class="keyword">營養不良</span><span class="keyword">暴露治療</span><span class="keyword">發展心理學</span></div></div>
+
+  <div class="clinic-links-grid">
+    <a href="https://www.leepsyclinic.com/" class="clinic-link" target="_blank" rel="noopener">
+      <span class="clinic-icon">🏥</span>
+      <span class="clinic-name">李政洋身心診所首頁</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://blog.leepsyclinic.com/" class="clinic-link" target="_blank" rel="noopener">
+      <span class="clinic-icon">📰</span>
+      <span class="clinic-name">訂閱電子報</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+    <a href="https://buymeacoffee.com/CYlee" class="clinic-link" target="_blank" rel="noopener">
+      <span class="clinic-icon">☕</span>
+      <span class="clinic-name">Buy Me a Coffee</span>
+      <span class="clinic-arrow">→</span>
+    </a>
+  </div>
+
+  <footer>
+    <span>資料來源：PubMed &middot; 分析模型：nvidia/nemotron-3-super-120b-a12b</span>
+    <span><a href="https://github.com/u8901006/food-aversion">GitHub</a></span>
+  </footer>
+</div>
+</body>
+</html>
