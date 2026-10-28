@@ -2,10 +2,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 
 const API_BASE = "https://integrate.api.nvidia.com/v1";
-const MODELS_FALLBACK = [
-  "nvidia/nemotron-3-super-120b-a12b",
-  "nvidia/nemotron-3-nano-30b-a3b",
-];
+const MODELS_FALLBACK = (process.env.NVIDIA_MODELS || "nvidia/nemotron-3.5-lightning-30b-a3b,deepseek-ai/deepseek-v4.1-flash").split(",").map(s => s.trim()).filter(Boolean);
 const TARGET_DATE = process.env.TARGET_DATE || getTaipeiDate();
 const PAPERS_PATH = resolve("papers.json");
 const OUTPUT_PATH = resolve(
